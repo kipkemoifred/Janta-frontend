@@ -8,7 +8,7 @@ export const LOGOUT = 'LOGOUT';
 // Register User
 export const register = (username, password) => async (dispatch) => {
   try {
-    await axios.post('http://localhost:3001/register', { username, password });
+    await axios.post('http://localhost:3001/auth/register', { username, password });
     dispatch({ type: REGISTER_SUCCESS });
   } catch (err) {
     console.error(err);
@@ -18,7 +18,7 @@ export const register = (username, password) => async (dispatch) => {
 // Login User
 export const login = (username, password) => async (dispatch) => {
   try {
-    const response = await axios.post('http://localhost:3001/login', { username, password });
+    const response = await axios.post('http://localhost:3001/auth/login', { username, password });
     localStorage.setItem('token', response.data.token);
     dispatch({ type: LOGIN_SUCCESS, payload: response.data.token });
   } catch (err) {
