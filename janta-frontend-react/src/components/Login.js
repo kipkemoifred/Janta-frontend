@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../actions/authActions';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+
+
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(username, password));
+    dispatch(login(username, password,navigate));
   };
 
   return (
